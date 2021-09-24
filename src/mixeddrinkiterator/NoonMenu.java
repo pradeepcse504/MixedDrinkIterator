@@ -1,13 +1,13 @@
 
 package mixeddrinkiterator;
-
+import java.util.*;
 public class NoonMenu implements Cocktail {
-    static final int MAX_DRINKS = 10;
+
     int totalDrinks = 0;
-    MixedDrinkItem[] drinks;
+    List<MixedDrinkItem> drinks;
     
     public NoonMenu(){
-        drinks = new MixedDrinkItem[ MAX_DRINKS ];
+        drinks = new ArrayList<MixedDrinkItem>();
         
         addDrink("Mimosas", "light and fruity, with equal amounts orange juice and sparkling wine.", true, 2.3);
         addDrink("Bloody Mary", "A complex drink with tomata slices and garnish", true, 1.5);
@@ -19,18 +19,15 @@ public class NoonMenu implements Cocktail {
     public void addDrink(String name, String description,
         boolean alcoholic, double price    ){
         MixedDrinkItem drinkItem = new MixedDrinkItem(name, description, alcoholic, price);
-        if(totalDrinks >= MAX_DRINKS){
-            System.out.println("Collection full Cannot add drink");
-        }
-        else{
-            drinks[totalDrinks] = drinkItem;
-            totalDrinks = totalDrinks + 1;
-        }
+        drinks.add(drinkItem);
     }
-    public MixedDrinkItem[] getDrinks(){
+    public List<MixedDrinkItem> getDrinks(){
         return drinks;
     }
     public Iterator createIterator(){
-        return new CocktailIterator(drinks);
+        return new NoonIterator(drinks);
+    }
+    public String toString() {
+    	return "Drinks best taken before noon" ;
     }
 }

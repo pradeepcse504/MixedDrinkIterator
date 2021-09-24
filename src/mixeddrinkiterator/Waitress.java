@@ -15,7 +15,7 @@ public class Waitress {
         Iterator noonIterator = noonCocktail.createIterator();
         System.out.println("\nCocktails----Morning----\n");
         printCocktail(desertIterator);
-        System.out.println("\nCocktails----Desert");
+        System.out.println("\nCocktails----Desert\n");
         printCocktail(noonIterator);
         
     }
